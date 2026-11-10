@@ -1,0 +1,45 @@
+#include<stdio.h>
+
+void display(int n,int marks[])
+{
+    printf("Array is :");
+    for(int i=0;i<n;i++)
+        printf(" %d ",marks[i]);
+}
+
+int insert(int n, int marks[])
+{
+    int value,pos;
+    printf("\nEnter the position and marks to insert:");
+    scanf("%d %d",&pos,&value);
+    for(int i=n;i>pos;i--)
+        marks[i]=marks[i-1];
+    marks[pos]=value;
+    return n+1;
+}
+
+int delete(int n,int marks[])
+{
+    int pos;
+    printf("\nEnter the position to delete the marks :");
+    scanf("%d",&pos);
+    for(int i=pos;i<n+1;i++)
+        marks[i]=marks[i+1];
+    return n-1;
+}
+
+void main()
+{
+    int n;
+    printf("Enter the no of students: ");
+    scanf("%d",&n);
+    int marks[n];
+    printf("Enter the mark of the %d students : ",n);
+    for(int i=0;i<n;i++)
+        scanf("%d",&marks[i]);
+    display(n,marks);
+    n=insert(n,marks);
+    display(n,marks);
+    n=delete(n,marks);
+    display(n,marks);
+}
